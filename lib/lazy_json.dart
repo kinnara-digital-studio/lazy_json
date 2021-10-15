@@ -78,7 +78,7 @@ extension NullsafeJsonObject on Map<String, dynamic> {
   ///
   T get<T>(String key, [T? defaultValue]) {
     try {
-      return this[key] ?? this.putIfAbsent(key, () => defaultValue);
+      return this[key] ?? putIfAbsent(key, () => defaultValue);
     } catch (e) {
       return defaultValue!;
     }
@@ -165,10 +165,10 @@ extension NullsafeJsonArray on List<dynamic> {
   /// Generic method to handle any data type.
   ///
   T get<T>(int index, [T? defaultValue]) {
-    if (this.length < index) {
-      this.add(defaultValue);
+    if (length < index) {
+      add(defaultValue);
     } else {
-      this.insert(index, defaultValue);
+      insert(index, defaultValue);
     }
     return defaultValue!;
   }
