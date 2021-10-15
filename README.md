@@ -6,7 +6,7 @@ Provides null-safety implementation to simplify JSON data handling by adding ext
 Add dependency in `pubspec.yml`
 ```yml
 dependencies:
-  lazy_json: ^1.0.0
+  lazy_json: ^1.0.1
 ```
 
 ## Usage
