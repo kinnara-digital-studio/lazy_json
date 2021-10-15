@@ -9,7 +9,7 @@ extension NullsafeJsonObject on Map<String, dynamic> {
   /// shorthand method [b].
   ///
   bool boolean(String key, [bool defaultValue = false]) =>
-      get(key, defaultValue);
+      _get(key, defaultValue);
 
   ///
   /// Shorthand for method [boolean].
@@ -20,7 +20,7 @@ extension NullsafeJsonObject on Map<String, dynamic> {
   /// Get [integer] value from JSON Object. For lazier person, you can use
   /// shorthand method [i].
   ///
-  int integer(String key, [int defaultValue = 0]) => get(key, defaultValue);
+  int integer(String key, [int defaultValue = 0]) => _get(key, defaultValue);
 
   ///
   /// Shorthand for method [integer].
@@ -32,7 +32,7 @@ extension NullsafeJsonObject on Map<String, dynamic> {
   /// shorthand method [f].
   ///
   double float(String key, [double defaultValue = 0.0]) =>
-      get(key, defaultValue);
+      _get(key, defaultValue);
 
   ///
   /// Shorthand for method [float].
@@ -44,7 +44,7 @@ extension NullsafeJsonObject on Map<String, dynamic> {
   /// shorthand method [s].
   ///
   String string(String key, [String defaultValue = '']) =>
-      get(key, defaultValue);
+      _get(key, defaultValue);
 
   ///
   /// Shorthand for method [string].
@@ -55,7 +55,7 @@ extension NullsafeJsonObject on Map<String, dynamic> {
   /// Get [Map] value from JSON Object. For lazier person, you can use
   /// shorthand method [o].
   ///
-  Map<String, dynamic> object(String key) => get(key, {});
+  Map<String, dynamic> object(String key) => _get(key, {});
 
   ///
   /// Shorthand for method [object].
@@ -66,7 +66,7 @@ extension NullsafeJsonObject on Map<String, dynamic> {
   /// Get [List] value from JSON Object. For lazier person, you can use
   /// shorthand method [a].
   ///
-  List<dynamic> array(String key) => get(key, []);
+  List<dynamic> array(String key) => _get(key, []);
 
   ///
   /// Shorthand for method [array].
@@ -76,11 +76,11 @@ extension NullsafeJsonObject on Map<String, dynamic> {
   ///
   /// Generic method to handle any data type.
   ///
-  T get<T>(String key, [T? defaultValue]) {
+  T _get<T>(String key, T defaultValue) {
     try {
       return this[key] ?? putIfAbsent(key, () => defaultValue);
     } catch (e) {
-      return defaultValue!;
+      return defaultValue;
     }
   }
 }
@@ -94,7 +94,7 @@ extension NullsafeJsonArray on List<dynamic> {
   /// shorthand method [b].
   ///
   bool boolean(int index, [bool defaultValue = false]) =>
-      get(index, defaultValue);
+      _get(index, defaultValue);
 
   ///
   /// Shorthand for method [boolean].
@@ -106,7 +106,7 @@ extension NullsafeJsonArray on List<dynamic> {
   /// Get [int] value from JSON Array. For lazier person, you can use
   /// shorthand method [i].
   ///
-  int integer(int index, [int defaultValue = 0]) => get(index, defaultValue);
+  int integer(int index, [int defaultValue = 0]) => _get(index, defaultValue);
 
   ///
   /// Shorthand for method [integer].
@@ -118,7 +118,7 @@ extension NullsafeJsonArray on List<dynamic> {
   /// shorthand method [f].
   ///
   double float(int index, [double defaultValue = 0.0]) =>
-      get(index, defaultValue);
+      _get(index, defaultValue);
 
   ///
   /// Shorthand for method [float].
@@ -131,7 +131,7 @@ extension NullsafeJsonArray on List<dynamic> {
   /// shorthand method [s].
   ///
   String string(int index, [String defaultValue = '']) =>
-      get(index, defaultValue);
+      _get(index, defaultValue);
 
   ///
   /// Shorthand for method [string].
@@ -143,7 +143,7 @@ extension NullsafeJsonArray on List<dynamic> {
   /// Get [Map] value from JSON Array. For lazier person, you can use
   /// shorthand method [o].
   ///
-  Map<String, dynamic> object(int index) => get(index, {});
+  Map<String, dynamic> object(int index) => _get(index, {});
 
   ///
   /// Shorthand for method [object].
@@ -154,7 +154,7 @@ extension NullsafeJsonArray on List<dynamic> {
   /// Get [List] value from JSON Array. For lazier person, you can use
   /// shorthand method [a].
   ///
-  List<dynamic> array(int index) => get(index, []);
+  List<dynamic> array(int index) => _get(index, []);
 
   ///
   /// Shorthand for method [array].
@@ -164,12 +164,15 @@ extension NullsafeJsonArray on List<dynamic> {
   ///
   /// Generic method to handle any data type.
   ///
-  T get<T>(int index, [T? defaultValue]) {
-    if (length < index) {
+  T _get<T>(int index, T defaultValue) {
+    if (length <= index) {
+      for(int i = length; i < index; i++) {
+        add(null);
+      }
       add(defaultValue);
     } else {
-      insert(index, defaultValue);
+      return this[index] ??= defaultValue;
     }
-    return defaultValue!;
+    return defaultValue;
   }
 }
