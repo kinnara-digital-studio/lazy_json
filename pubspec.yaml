@@ -1,6 +1,6 @@
 name: lazy_json
 description: Provides null-safety implementation to simplify JSON data handling by adding extension method to JSON object and JSON array.
-version: 1.0.2
+version: 1.0.3
 homepage: https://github.com/kinnara-digital-studio/lazy_json#lazy-json
 
 environment:

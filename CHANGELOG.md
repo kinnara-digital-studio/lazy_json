@@ -1,3 +1,7 @@
+## 1.0.3
+
+* Ensure immutability
+
 ## 1.0.2
 
 * Fix description
