@@ -1,6 +1,6 @@
 # Lazy JSON
 
-Provides null-safety implementation to simplify JSON data handling by adding extension method to JSON object and JSON array.
+Provides null-safety implementation to simplify Json data handling by adding extension methods to Json Object (`Map<String, dynamic`) and Json Array (`List<dynamic>`). It simplifies codes and improve readibility of retriving value from Json, for example from `((json['response'] ?? {})['data'] ?? {})['id'] ?? ''` to `json.object('response').object('data').string('id')`. It also significantly simplify codes when dealing with Json Array.
 
 ## Getting started
 Add dependency in `pubspec.yml`
@@ -16,6 +16,8 @@ Import library to your .dart file:
 ```dart
 import 'package:lazy_json/lazy_json.dart';
 ```
+
+Now you can use the extension methods for data type `Map<String, dynamic>` and `List<dynamic>`.
   
 ## Supported Data Types
   
