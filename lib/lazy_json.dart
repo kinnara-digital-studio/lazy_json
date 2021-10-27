@@ -1,7 +1,7 @@
 library lazy_json;
 
 ///
-/// Null safe method extension for JSON Object.
+/// Null safe method extension for JSON
 ///
 extension NullsafeJsonObject on Map<String, dynamic> {
   ///
@@ -78,8 +78,10 @@ extension NullsafeJsonObject on Map<String, dynamic> {
   ///
   T _get<T>(String key, T defaultValue) {
     try {
+      // when null, return default value
       return this[key] ?? defaultValue;
     } catch (e) {
+      // on exceptions, return default value
       return defaultValue;
     }
   }
@@ -166,8 +168,10 @@ extension NullsafeJsonArray on List<dynamic> {
   ///
   T _get<T>(int index, T defaultValue) {
     try {
+      // when null, return default value
       return this[index] ?? defaultValue;
     } catch (e) {
+      // on exceptions, return default value
       return defaultValue;
     }
   }
