@@ -25,5 +25,5 @@ void main() {
   print(jsonObject
       .object('response')
       .object('data')
-      .integer('dummyField', 99)); // prints 10
+      .integer('dummyField', 99)); // prints 99
 }
