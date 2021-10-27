@@ -99,16 +99,16 @@ final myBoolean = myJsonArray.boolean(3, true);
 Usage:
 ```dart
 // on JSON object, if 'myKey' not found it returns empty object
-final myObject = myJsonObject.integer('myKey');
+final myObject = myJsonObject.object('myKey');
   
 // on JSON object, if 'myKey' not found it returns JSON object {'a' : 10}
-final myObject = myJsonObject.integer('myKey', {'a' : 10});
+final myObject = myJsonObject.object('myKey', {'a' : 10});
   
 // on JSON Array, retrieve JSON object at index 0
-final myObject = myJsonArray.integer(0);
+final myObject = myJsonArray.object(0);
   
 // on JSON Array, retrieve JSON object at index 3, returns {'b' : 'hello world'} as default value
-final myObject = myJsonArray.integer(3, {'b' : 'hello world'});
+final myObject = myJsonArray.object(3, {'b' : 'hello world'});
 ```
   
 
